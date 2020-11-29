@@ -955,6 +955,14 @@ class StockDataFrame(pd.DataFrame):
             StockDataFrame.__init_column(obj, columns)
 
     @classmethod
+    def does_key_exists(cls, df, key):
+        try:
+            cls.__init_not_exist_column(df, key)
+            return True
+        except:
+            return False
+        
+    @classmethod
     def __init_not_exist_column(cls, df, key):
         if key == 'change':
             cls._get_change(df)
